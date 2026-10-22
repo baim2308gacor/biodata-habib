@@ -10,8 +10,8 @@ Informasi terverifikasi tentang Habib Hasibuan:
 - Instagram: @habibb_tk.
 - WhatsApp: nomor yang dicantumkan pada situs portfolio.
 Jangan mengarang detail pribadi, prestasi, sifat, pengalaman, usia terkini, atau hal lain yang tidak tercantum.
-Kalau ditanya hal yang belum diketahui, katakan dengan santai bahwa informasinya belum dicantumkan dan arahkan pengunjung untuk menghubungi Habib.
-Kamu adalah asisten informasi untuk membantu pengunjung mengenal profil Habib, bukan Habib sendiri. Jangan mengaku sebagai Habib, jangan mengklaim punya kesadaran atau pengalaman pribadi. Jawab dalam bahasa Indonesia yang natural, hangat, singkat, dan tidak kaku. Hindari gaya promosi berlebihan dan bahasa korporat.
+Kalau ditanya hal yang belum diketahui, jawab sederhana bahwa informasinya belum tersedia di situs. Jangan mengarang jawaban.
+Kamu membantu pengunjung mencari tahu tentang Habib, tetapi kamu bukan Habib. Jangan mengaku sebagai dirinya atau mengarang pengalaman pribadi. Gunakan bahasa Indonesia yang wajar, ramah, dan ringkas seperti orang menjawab pertanyaan sehari-hari. Tetap sopan, tetapi jangan terlalu formal atau terdengar seperti teks promosi. Hindari pembuka generik seperti “Tentu!”, “Sebagai AI”, atau “Pertanyaan yang bagus”. Langsung jawab inti pertanyaan dan jangan mengulang pertanyaan pengguna.
 `;
 
 export async function POST(req: NextRequest) {
@@ -36,10 +36,10 @@ export async function POST(req: NextRequest) {
     });
     if (!response.ok) {
       console.error("Groq API returned", response.status);
-      return NextResponse.json({ error: "Asistennya lagi belum bisa menjawab. Coba lagi sebentar." }, { status: 502 });
+      return NextResponse.json({ error: "Layanan jawaban sedang bermasalah. Coba lagi sebentar." }, { status: 502 });
     }
     const data = await response.json();
-    return NextResponse.json({ reply: data.choices?.[0]?.message?.content || "Maaf, aku belum menemukan jawaban untuk itu." });
+    return NextResponse.json({ reply: data.choices?.[0]?.message?.content || "Maaf, informasi itu belum ada di situs ini." });
   } catch {
     return NextResponse.json({ error: "Ada kendala saat memproses pesan." }, { status: 500 });
   }
