@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInstagram, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { faArrowDown, faArrowRight, faArrowUpRightFromSquare, faBars, faBriefcase, faCheck, faChevronRight, faDumbbell, faGamepad, faGraduationCap, faHouse, faMessage, faMoon, faPaperPlane, faSun, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 type Page = "Beranda" | "Biodata" | "Hobi" | "Kontak";
@@ -151,9 +152,21 @@ function BiodataPage() {
       <div className="bio-photo glass"><Image src="/images/habib2.jpg" alt="Potret Habib Hasibuan" fill sizes="(max-width: 800px) 90vw, 34vw" className="cover-image" /><span className="photo-tag">HABIB HASIBUAN / 001</span></div>
       <div className="bio-details glass"><div className="card-kicker">01 — INFORMASI PRIBADI</div>{facts.map(([label, value], i) => <div className="fact-row" key={label}><span className="fact-index">0{i + 1}</span><span className="fact-label">{label}</span><strong>{value}</strong></div>)}<p className="bio-note">Saya masih perlu banyak belajar dan mencari pengalaman. Harapannya, suatu saat saya bisa membangun usaha sendiri.</p></div>
     </div>
-    <div className="school-section"><div className="subheading"><span>02 / RIWAYAT SEKOLAH</span><h2>Perjalanan pendidikan.</h2></div><div className="school-list">
-      {[["01","SD","DAHLIA"],["02","SMP","AL WASHLIYAH"],["03","SMK","S TELADAN P SIANTAR"]].map(([n,level,name]) => <div className="school-row" key={n}><span className="school-no">{n}</span><span className="school-level">{level}</span><strong>{name}</strong><FontAwesomeIcon icon={faArrowUpRightFromSquare} /></div>)}
-    </div></div>
+    <div className="school-section">
+      <div className="subheading">
+        <span>02 / RIWAYAT SEKOLAH</span>
+        <h2>Perjalanan pendidikan.</h2>
+        <p>Setiap jenjang menjadi bagian dari proses belajar dan pengalaman saya.</p>
+      </div>
+      <div className="school-list">
+        {[["01","SD","DAHLIA","Awal perjalanan pendidikan"],["02","SMP","AL WASHLIYAH","Melanjutkan proses belajar"],["03","SMK","S TELADAN P SIANTAR","Jenjang pendidikan berikutnya"]].map(([n,level,name,note]) => <div className="school-row" key={n}>
+          <span className="school-no">{n}</span>
+          <span className="school-marker"><FontAwesomeIcon icon={faGraduationCap} /></span>
+          <div className="school-info"><span className="school-level">{level}</span><strong>{name}</strong><small>{note}</small></div>
+          <span className="school-check" aria-hidden="true"><FontAwesomeIcon icon={faArrowUpRightFromSquare} /></span>
+        </div>)}
+      </div>
+    </div>
   </div>;
 }
 
@@ -177,8 +190,8 @@ function ContactPage({ copyWhatsApp, copied }: { copyWhatsApp: () => void; copie
     <div className="page-heading"><div><p className="eyebrow">INFORMASI KONTAK</p><h1>Hubungi saya<br /><span className="name-gradient">lebih lanjut.</span></h1></div><p className="heading-side">Kalau ingin menyapa, silakan hubungi saya lewat akun berikut.</p></div>
     <div className="contact-layout"><div className="contact-intro glass"><span className="contact-orb">HH<span>.</span></span><p>Senang rasanya bisa berkenalan dengan orang baru. Kamu bisa menghubungi saya lewat Instagram atau WhatsApp.</p><div className="contact-small">SOCIAL LINKS / 2026</div></div>
       <div className="social-list">
-        <a className="social-card glass" href="https://www.instagram.com/habibb_tk/" target="_blank" rel="noreferrer"><span className="social-avatar instagram"><Image src="/images/profileinstagram.jpg" alt="Foto profil" fill sizes="52px" /></span><span className="social-text"><small>INSTAGRAM</small><strong>@habibb_tk</strong><span>Kunjungi akun Instagram saya.</span></span><FontAwesomeIcon icon={faArrowUpRightFromSquare} className="social-arrow" /></a>
-        <a className="social-card glass" href="https://wa.me/6283869313223" target="_blank" rel="noreferrer"><span className="social-avatar whatsapp"><Image src="/images/profilewhatsapp.jpg" alt="Foto profil" fill sizes="52px" /></span><span className="social-text"><small>WHATSAPP</small><strong>Chat langsung</strong><span>Kirim pesan melalui WhatsApp.</span></span><FontAwesomeIcon icon={faArrowUpRightFromSquare} className="social-arrow" /></a>
+        <a className="social-card glass" href="https://www.instagram.com/habibb_tk/" target="_blank" rel="noreferrer"><span className="social-avatar instagram"><Image src="/images/profileinstagram.jpg" alt="Foto profil Instagram Habib" fill sizes="52px" /></span><span className="social-text"><small>INSTAGRAM</small><strong>@habibb_tk</strong><span>Kunjungi akun Instagram saya.</span></span><span className="social-brand instagram-brand" aria-hidden="true"><FontAwesomeIcon icon={faInstagram} /></span><FontAwesomeIcon icon={faArrowUpRightFromSquare} className="social-arrow" /></a>
+        <a className="social-card glass" href="https://wa.me/6283869313223" target="_blank" rel="noreferrer"><span className="social-avatar whatsapp"><Image src="/images/profilewhatsapp.jpg" alt="Foto profil WhatsApp Habib" fill sizes="52px" /></span><span className="social-text"><small>WHATSAPP</small><strong>Chat langsung</strong><span>Kirim pesan melalui WhatsApp.</span></span><span className="social-brand whatsapp-brand" aria-hidden="true"><FontAwesomeIcon icon={faWhatsapp} /></span><FontAwesomeIcon icon={faArrowUpRightFromSquare} className="social-arrow" /></a>
         <button className="copy-number glass" onClick={copyWhatsApp}><span>NO. WHATSAPP</span><strong>0838 6931 3223</strong><span className="copy-action"><FontAwesomeIcon icon={copied ? faCheck : faArrowRight} /> {copied ? "Nomor disalin" : "Salin nomor"}</span></button>
       </div>
     </div>
