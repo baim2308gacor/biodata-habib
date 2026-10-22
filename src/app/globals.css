@@ -124,3 +124,45 @@ button{cursor:pointer}
 .hobby-arrow.is-open{transform:rotate(90deg)}
 .hobby-reason{overflow:hidden;border-top:1px solid var(--line);margin-top:15px}
 .hobby-reason p{min-height:0!important;padding-top:14px;margin:0!important;color:var(--soft)!important;font-size:12px;line-height:1.9}
+
+
+/* Ikon merek sosial dipisahkan dari foto profil agar tidak saling menumpuk. */
+.social-card { min-width: 0; gap: 13px; }
+.social-avatar { z-index: 0; flex-shrink: 0; }
+.social-text { min-width: 0; }
+.social-text strong, .social-text span { overflow-wrap: anywhere; }
+.social-brand { display: grid; place-items: center; flex: 0 0 36px; width: 36px; height: 36px; border-radius: 12px; margin-left: auto; font-size: 19px; }
+.instagram-brand { color: #e878ad; background: rgba(214,70,140,.12); }
+.whatsapp-brand { color: #36c987; background: rgba(42,196,123,.12); }
+.social-arrow { flex: 0 0 auto; margin-left: 1px; }
+@media (max-width: 680px) {
+  .social-card { gap: 11px; padding: 16px; }
+  .social-avatar { flex-basis: 50px; width: 50px; height: 50px; }
+  .social-brand { flex-basis: 32px; width: 32px; height: 32px; font-size: 17px; border-radius: 10px; }
+  .social-text span { line-height: 1.5; }
+}
+
+
+/* Riwayat pendidikan: kartu bertingkat dengan bingkai dan aksen garis waktu. */
+.school-section{align-items:start;gap:clamp(28px,5vw,72px);margin-top:82px}
+.subheading{position:relative;padding:25px 24px 26px;border:1px solid var(--line-strong);border-radius:22px;background:linear-gradient(145deg,rgba(35,105,220,.10),var(--surface));box-shadow:inset 0 1px 0 rgba(255,255,255,.06),var(--shadow);overflow:hidden}
+.subheading:after{content:"EDUCATION / HH";display:inline-flex;margin-top:28px;padding:8px 11px;border:1px solid var(--line-strong);border-radius:999px;color:var(--muted);font:9px var(--font-mono);letter-spacing:1.2px}
+.subheading>span{display:inline-flex;align-items:center;gap:8px;padding:7px 10px;border:1px solid rgba(54,137,255,.25);border-radius:999px;background:rgba(54,137,255,.09)}
+.subheading h2{font-family:var(--font-display);font-size:clamp(25px,3vw,34px);line-height:1.13;letter-spacing:-.045em;margin:22px 0 13px;max-width:270px}
+.subheading p{max-width:290px;color:var(--muted);font-size:12px;line-height:1.9;margin:0}
+.school-list{position:relative;display:grid;gap:12px;border:0;padding-left:20px}
+.school-list:before{content:"";position:absolute;left:5px;top:27px;bottom:27px;width:1px;background:linear-gradient(var(--blue),var(--line-strong),transparent)}
+.school-row{position:relative;display:grid;grid-template-columns:34px 42px minmax(0,1fr) 28px;gap:13px;align-items:center;min-height:94px;padding:17px 18px;border:1px solid var(--line-strong);border-radius:19px;background:linear-gradient(110deg,var(--surface-strong),var(--surface));box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 10px 30px rgba(0,0,0,.06);transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease}
+.school-row:before{content:"";position:absolute;left:-20px;top:50%;width:8px;height:8px;transform:translateY(-50%);border:2px solid var(--blue);border-radius:50%;background:var(--bg);box-shadow:0 0 0 5px rgba(54,137,255,.10)}
+.school-row:hover{transform:translateX(5px);border-color:rgba(54,137,255,.5);box-shadow:0 16px 38px rgba(15,95,220,.12)}
+.school-no{display:grid;place-items:center;width:32px;height:32px;border-radius:10px;background:rgba(54,137,255,.12);font:10px var(--font-mono);color:var(--blue2)}
+.school-marker{display:grid;place-items:center;width:40px;height:40px;border:1px solid var(--line-strong);border-radius:13px;background:rgba(54,137,255,.08);color:var(--blue2);font-size:15px}
+.school-info{display:flex;flex-direction:column;align-items:flex-start;gap:5px;min-width:0}
+.school-info .school-level{font:9px var(--font-mono);letter-spacing:1.5px;color:var(--blue2)}
+.school-info strong{font-size:13px;line-height:1.45;letter-spacing:-.02em;overflow-wrap:anywhere}
+.school-info small{color:var(--muted);font-size:10px;line-height:1.5}
+.school-check{display:grid;place-items:center;width:28px;height:28px;border:1px solid var(--line);border-radius:9px;color:var(--muted);font-size:10px;transition:color .2s,border-color .2s,transform .2s}
+.school-row:hover .school-check{color:var(--blue2);border-color:var(--line-strong);transform:translate(2px,-2px)}
+.site.light .school-row{background:linear-gradient(110deg,rgba(255,255,255,.96),rgba(244,248,255,.88))}
+.site.light .subheading{background:linear-gradient(145deg,rgba(35,105,220,.07),rgba(255,255,255,.85))}
+@media(max-width:680px){.school-section{margin-top:55px;gap:18px}.subheading{padding:22px 20px}.subheading:after{margin-top:18px}.subheading h2{max-width:none;margin:16px 0 10px}.school-list{padding-left:15px;gap:10px}.school-list:before{left:3px}.school-row{grid-template-columns:30px 36px minmax(0,1fr) 24px;gap:9px;padding:14px 11px;min-height:88px;border-radius:16px}.school-row:before{left:-15px;width:7px;height:7px}.school-marker{width:35px;height:35px;border-radius:11px}.school-info strong{font-size:11px}.school-info small{font-size:9px}.school-no{width:29px;height:29px}.school-check{width:24px;height:24px}}
